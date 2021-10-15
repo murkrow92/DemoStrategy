@@ -1,7 +1,5 @@
 package com.company;
 
-import com.company.original.Template3;
-import com.company.original.TransactionHistoryPage;
 import com.company.strategy.*;
 
 import javax.swing.*;
@@ -11,11 +9,7 @@ import java.awt.event.WindowEvent;
 public class MainStrategy {
 
     public static void main(String[] args) {
-
-        Header header = new Header1();
-        Content content = new Content1();
-        Footer footer = new Footer1();
-        JFrame page = new BaseTemplate(header, content, footer);
+        BaseTemplate page = new BaseTemplate();
         page.setSize(300, 500);
         page.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent) {
@@ -24,6 +18,12 @@ public class MainStrategy {
         });
         page.getContentPane().setLayout(new BoxLayout(page.getContentPane(), BoxLayout.Y_AXIS));
         page.setVisible(true);
+
+        page.setHeader(new Header1());
+        page.setContent(new Content2());
+        page.setFooter(new Footer3());
+        page.render();
+
 
     }
 
